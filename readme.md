@@ -26,9 +26,14 @@
 ## 📃 Orientações
 
  ✓ Necessário que o Docker esteja instalado;<br />
- ✓ Execute o comando
+ ✓ Execute os comandos<br />
+ Criar os container e iniciar servidores:
 
     docker-compose up -d
+<br />
+Encerrar containers
+
+    docker-compose down
 
 <br />
  ✓ docker inspect idcontainer => exibe informações detalhadas do container
@@ -38,7 +43,7 @@
  ✓ http://localhost/ => Acessar php
 <br />
  ✓ http://localhost:8080/ => Acessar phpMyAdmin
- 
+
 ---
 ---
 ## 📧 Contato
