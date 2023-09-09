@@ -1,0 +1,43 @@
+version: "3.9"
+
+networks:
+  rede_php:
+    driver: bridge
+
+services:
+  php:
+    image: php:8.0-apache
+    container_name: php
+    restart: always
+    volumes:
+      - ./php:/var/www/html
+    ports:
+      - 80:80
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db_php
+      MYSQL_USER: wagnerdev
+      MYSQL_PASSWORD: dev123
+    volumes:
+      - ./mysql:/var/lib/mysql
+    ports:
+      - 3306:3306
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    restart: always
+    depends_on:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_USER: wagnerdev
+      PMA_PASSWORD: dev123
+    ports:
+      - 8080:80
